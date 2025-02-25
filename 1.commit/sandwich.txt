@@ -1,4 +1,13 @@
-pan
-queso
-medallón
-pan
+
+Pan (baguette, ciabatta, centeno, integral, blanco, pan pita)
+Carnes frías (jamón, pavo, salami, roast beef, mortadela, prosciutto)
+Quesos (cheddar, suizo, gouda, mozzarella, provolone, azul)
+Vegetales (lechuga, tomate, cebolla, pepino, espinaca, pimientos asados)
+Aguacate
+Pepinillos
+Aceitunas
+Tocino crujiente
+Huevo duro o frito
+Pollo o carne asada
+Atún o sardinas
+Champiñones salteados

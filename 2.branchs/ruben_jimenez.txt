@@ -1,0 +1,113 @@
+2.1
+1. ¿Qué es un branch?
+Un branch (rama) en Git es una línea independiente de desarrollo que permite trabajar en nuevas características o correcciones sin afectar la rama principal del proyecto.
+
+2. ¿Por qué pueden ser útiles los branches?
+Permiten trabajar en nuevas funciones sin afectar la versión estable del código.
+Facilitan la colaboración, ya que diferentes personas pueden trabajar en distintas ramas y luego combinarlas.
+Ayudan a mantener un historial de cambios más organizado.
+Se pueden crear ramas para pruebas, hotfixes o desarrollo experimental sin riesgos.
+
+3. ¿Cómo se crea una branch?
+
+git branch nombre_de_la_rama
+
+
+4. ¿Cómo se cambia a una branch?
+git checkout nombre_de_la_rama
+
+5. ¿Cómo se elimina una branch?
+
+Si la rama ya fue fusionada, se puede eliminar con:
+git branch -d nombre_de_la_rama
+
+Si la rama no fue fusionada, se debe forzar la eliminación con:
+git branch -D nombre_de_la_rama
+
+6. ¿Cómo se crea una branch y se cambia a ella en un solo paso?
+git checkout -b nombre de la rama
+
+7. ¿Qué es un merge?
+Un merge es la acción de combinar los cambios de una rama con otra. Generalmente, se usa para fusionar una rama de desarrollo con la rama principal (main o master).
+
+8. ¿Cómo se realiza un merge?
+
+Cambiar a la rama donde queremos fusionar los cambios (ejemplo: main):
+
+git merge nombre_rama_a_fusionar
+
+9. ¿Qué es un tag?
+Un tag es una etiqueta que se usa para marcar puntos importantes en la historia del proyecto, como versiones de lanzamiento (v1.0, v2.0).
+
+A diferencia de las ramas, los tags no cambian con nuevos commits.
+
+10. ¿Cómo se crea un tag?
+Para crear un tag ligero:
+
+git tag nombre_del_tag
+
+Para crear un tag con un mensaje descriptivo:
+git tag -a nombre_del_tag -m "Descripción del tag"
+
+Para subir los tags al repositorio remoto:
+git push origin --tags
+
+
+
+2.2
+
+3 . 
+$ git branch
+  bife
+* experimento
+  main
+  practica2025
+  ruben_jimenez
+  suprema
+
+6. $ git graph
+* d4b4a10 (HEAD -> experimento) se agrego oregano
+* 21e0da0 se agrergo albahaca
+se observan los cambios que se acabaron de realizar en el head y en la rama experimento
+
+10.  $ git graph
+* 4a4a29c (HEAD -> anana) se agrego anana
+
+se observa que anana tiene su propia linea separada de las demás ramas
+
+13.  5be0be4 (HEAD -> main) se agrego cebolla
+| * 4a4a29c (anana) se agrego anana
+|/
+| * d4b4a10 (experimento) se agrego oregano
+| * 21e0da0 se agrergo albahaca
+
+se observa que cada rama esta separada y muestra el mensaje de lo que se realizo 
+
+15. anana ahora está unida a main.
+
+19. se tuvo que hacer los cambios manualmente ya que se estaba trabajando sobre la mismas líneas
+
+27.
+tag pizza
+Tagger: ruben <ruben.3210@gmail.com>
+Date:   Mon Feb 24 23:35:01 2025 -0500
+
+receta de la pizza
+
+commit 844a21cf3f9cef9aedf3ec7726d10970c3e9ff6f (HEAD -> main, tag: pizza)
+Merge: 101b151 d4b4a10
+Author: ruben <ruben.3210@gmail.com>
+Date:   Mon Feb 24 23:29:18 2025 -0500
+
+    main y experimengto
+
+diff --cc 2.branchs/pizza.txt
+index 8a01068,4f33c3e..04dd3f7
+--- a/2.branchs/pizza.txt
++++ b/2.branchs/pizza.txt
+@@@ -1,5 -1,6 +1,8 @@@
++ oregano
++ albahaca
+  queso
+ +anana
+  salsa de tomate

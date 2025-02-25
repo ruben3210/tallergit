@@ -1,0 +1,75 @@
+3.1 
+1. ¿Qué es un conflicto en Git?
+Un conflicto ocurre cuando dos o más cambios en un mismo archivo no pueden ser fusionados automáticamente por Git. Esto suele suceder cuando diferentes ramas han modificado la misma línea de un archivo y Git no sabe cuál versión conservar.
+
+¿Cuándo ocurre un conflicto?
+Los conflictos pueden ocurrir en situaciones como:
+
+Al hacer un git merge cuando dos ramas han modificado las mismas líneas.
+Al hacer un git rebase si hay cambios incompatibles entre la rama base y la actual.
+Al hacer un git pull si hay cambios remotos que entran en conflicto con los cambios locales.
+
+¿Es bueno o malo un conflicto?
+No es ni bueno ni malo, simplemente es parte del proceso de control de versiones. Un conflicto indica que Git necesita intervención humana para decidir qué cambios deben mantenerse. Si se maneja bien, puede ayudar a asegurar que el código final sea el correcto.
+
+2.
+ ¿Se puede evitar un conflicto? ¿Cómo?
+Si bien no se pueden evitar completamente, hay formas de reducir su frecuencia:
+
+Actualizar la rama local con git pull antes de hacer cambios, para trabajar sobre la última versión.
+Hacer commits frecuentes y pequeños, en lugar de cambios grandes que afecten muchas partes del código.
+Coordinar con el equipo, para evitar que varias personas editen el mismo archivo simultáneamente.
+Usar git rebase en lugar de git merge, cuando se trabaja en ramas personales antes de fusionarlas con la principal.
+Revisar bien los cambios antes de hacer git push, usando git diff y git status.
+Si ocurre un conflicto, se debe resolver manualmente editando el archivo afectado, eligiendo qué cambios conservar, y luego hacer git add y git commit para guardar la resolución.
+
+10. $ git diff main suprema
+diff --git a/3.conflicts/milanesa.txt b/3.conflicts/milanesa.txt
+index 5255304..1d61938 100644
+--- a/3.conflicts/milanesa.txt
++++ b/3.conflicts/milanesa.txt
+@@ -1,2 +1,2 @@
+ pan rallado
+-lomo
+\ No newline at end of file
++pollo
+
+Asus Vivobook@DESKTOP-GAVARN2 MINGW64 ~/OneDrive/Documentos/modelos de computadores/tallergit/3.conflicts (bife)
+$ git diff main bife
+
+se observa que genera conflicto ya que se cambio lomo a pollo 
+
+11.
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   milanesa.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+se observa que se modifico el archivo milanesa, pero los conflictos están en bife y suprema ya que en ese lado se cambiaron las palabras
+
+12. si funciono ya que main no tienen cambios en el archivo
+
+13 $ git merge suprema
+Updating fafdc7f..f40cd72
+error: Your local changes to the following files would be overwritten by merge:
+        3.conflicts/milanesa.txt
+Please commit your changes or stash them before you merge.
+Aborting
+
+
+Ocurre un conflicto porque milanesa.txt ya fue modificado en bife, y Git no sabe si debe conservar "bife" o cambiarlo a "pollo".
+
+14. indica que tiene conflictos por resolver
+
+15. <<<<<<< HEAD
+bife
+=======
+pollo
+>>>>>>> suprema
+
